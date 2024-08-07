@@ -59,6 +59,11 @@ async def query_ai(query: Query):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/")
+async def root_api(query: Query):
+    return "Welcome to pregnancy chatbot"
+
+
 # Run the app with Uvicorn if executed directly
 if __name__ == "__main__":
     import uvicorn
