@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "pregnancy-coach"
+version = "0.1.0"
+description = ""
+authors = ["Rhythm Saparia <rhythmsaparia@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+python-dotenv = "^1.0.1"
+langchain-groq = "^0.1.9"
+langchain-google-firestore = "^0.3.0"
+langchain = "^0.2.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
