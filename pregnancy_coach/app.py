@@ -52,6 +52,7 @@ class Query(BaseModel):
 @app.post("/query")
 async def query_ai(query: Query):
     try:
+        # saves chat history
         chat_history = [system_message]
         chat_history.append(HumanMessage(content=query.content))
         result = llm.invoke(chat_history)
