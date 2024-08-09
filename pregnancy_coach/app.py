@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from dotenv import load_dotenv
+from mangum import Mangum
 from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 from fastapi.middleware.cors import CORSMiddleware
@@ -36,6 +37,7 @@ Keep answers short and concise.
 system_message = SystemMessage(content=system_prompt)
 
 app = FastAPI()
+handler = Mangum(app)
 
 app.add_middleware(
     CORSMiddleware,
@@ -60,7 +62,7 @@ async def query_ai(query: Query):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/")
-async def root_api(query: Query):
+async def root_api():
     return "Welcome to pregnancy chatbot"
 
 
