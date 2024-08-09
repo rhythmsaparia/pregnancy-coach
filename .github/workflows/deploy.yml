@@ -34,4 +34,7 @@ jobs:
       run: sam build --use-container
 
     - name: Deploy SAM Application
-      run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name pregnancy-coach --capabilities CAPABILITY_IAM
+      env:
+        S3_BUCKET: pregnancy-coach-github-actions
+      run: |
+        sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name pregnancy-coach --s3-bucket $S3_BUCKET --capabilities CAPABILITY_IAM
